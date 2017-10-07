@@ -1,4 +1,4 @@
-// Usage: ./laplace-jacobi-iteration iterations, err_tol, rows, cols
+// Usage: ./laplace-jacobi-iteration iterations err_tol rows cols
 
 
 #include <math.h>
@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
     // get iter_max from command line at execution time
     // get tolerance from command line at execution time
     // get rows and columns from command line at execution time
-    // Usage: ./laplace-jacobi-iteration iterations, err_tol, rows, cols
+    // Usage: ./laplace-jacobi-iteration iterations err_tol rows cols
     if (argc > 1) iter_max = atoi(argv[1]);
     if (argc > 2) {
         tol = atof(argv[2]);
