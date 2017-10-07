@@ -57,35 +57,14 @@ int main(int argc, char **argv) {
     float **A = (float **) calloc(rows, sizeof(float *));
     float **Anew = (float **) calloc(rows, sizeof(float *));
 
-
+    //initialize each row/line with zeros
     for (int k = 0; k < rows; ++k) {
         A[k] = (float *) calloc(columns, sizeof(float));
         Anew[k] = (float *) calloc(columns, sizeof(float));
     }
 
-    //initialization with malloc instead of calloc
-//    float **A = (float **) malloc(rows * sizeof(float *));
-//    float **Anew = (float **) malloc(rows * sizeof(float *));
-//
-//    for (int k = 0; k < rows; ++k) {
-//        A[k] = (float *) malloc(columns * sizeof(float));
-//        Anew[k] = (float *) malloc(columns * sizeof(float));
-//    }
-//
-//    // set all values in matrix as zero
-//    for (int i = 0; i < columns; i++) {
-//        for (int j = 0; j < rows; j++) {
-//            A[j][i] = 0;
-//        }
-//    }
 
-
-//    float A[rows][columns];
-//    float Anew[rows][columns];
-//    memset( A, 0.0, rows*columns*sizeof(float) );
-//    memset( Anew, 0.0, rows*columns*sizeof(float) );
-
-
+    //initialize boundary conditions
     for (int i = 0; i < rows; i++) {
         A[i][0] = sin(i * M_PI / (rows - 1));
         A[i][columns - 1] = sin(i * M_PI / (rows - 1)) * exp(-1 * M_PI);
@@ -105,7 +84,7 @@ int main(int argc, char **argv) {
         }
 
         // Compute error = maximum of the square root of the absolute differences
-        float error = 0.0f;
+        error = 0.0f;
         for (int j = 1; j < rows - 1; j++) {
             for (int i = 1; i < columns - 1; i++) {
                 error = fmaxf(error, fabsf(A[j][i] - Anew[j][i]));
