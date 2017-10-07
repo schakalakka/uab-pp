@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 #define L 0.345678
@@ -14,15 +15,22 @@
 
 // define constants X, T
 // declare matrix U
-int main() {
+int main(int argc, char ** argv) {
     // declare local variables
     unsigned int X;
     unsigned int T;
 
-    printf("Value of X: ");
-    scanf("%i", &X);
-    printf("Value of max time T: ");
-    scanf("%i", &T);
+    // get X from command line at execution time
+    // get T from command line at execution time
+    // Usage: ./finite-differences X T
+    if (argc == 3) {
+        X = atoi(argv[1]);
+        T = atof(argv[2]);
+    }
+    else{
+        printf("Error: Please provide values for X and T\nUsage: ./finite-differences X T");
+        exit(1);
+    }
 
     // initialize positions of matrix U
     double U[X+1][T+2];

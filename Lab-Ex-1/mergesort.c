@@ -38,13 +38,21 @@ void mergeSort(float *X, float *Y, int N) {
 
 
 
-int main() {
+int main(int argc, char ** argv) {
 
     int N;
-    printf("Length of the dynamically allocated arrays: ");
-    scanf("%i", &N);
+    // get N from command line at execution time
+    // Usage: ./finite-differences X T
+    if (argc == 2) {
+        N = atoi(argv[1]);
+    }
+    else{
+        printf("Error: Please provide the array length N\nUsage: ./finite-differences N");
+        exit(1);
+    }
 
-    //allocate to arrays
+
+    //allocate two arrays
     float rand_arr[N];
     float result_arr[N];
 
