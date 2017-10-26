@@ -37,9 +37,15 @@ As we can see in figure (\ref{fig:oper}) the baseline version is very slow. For 
 	\label{fig:oper}
 \end{figure}
 
+
+
 \section{Effect of Problem Size and Variable Type}
 
-As derived in chapter (\ref{chp:opcom}) we can see in figure (\ref{fig:clock}) that the computation time indeed grows exponentially fast. Note that the y-axis has a logarithmic scale. We can see as well that the baseline code is slower than the improved one. It is independend of the input size.
+As derived in chapter (\ref{chp:opcom}) we can see in figure (\ref{fig:clock}) that the computation time indeed grows exponentially fast. Note that the y-axis has a logarithmic scale. We can see as well that the baseline code is slower than the improved one. It is independent of the input size.
+
+Later we will optimize different stages (initialization, diffusion and error computation(\emph{sum\_value}) at which we will see that the initialization has no real impact on the performance (for slightly bigger input values). 
+
+\textcolor{red}{TODO}compare with double compiled
 
 \begin{figure}[h]
 	\centering
@@ -61,6 +67,8 @@ There is a slight difference between the GCC and the ICC compiler. However, in g
 	\label{fig:instrcycle}
 \end{figure}
 
+
+\textcolor{red}{TODO} compare with different flags
 
 \section{Optimized Version without SIMD}
 
