@@ -56,11 +56,12 @@ void init(REAL *F1, const int nx, const int ny, const int nz,
     ax = exp(-kappa * time * (kx * kx));
     ay = exp(-kappa * time * (ky * ky));
     az = exp(-kappa * time * (kz * kz));
-    for (jx = 0; jx < nx; jx++)
-        for (jy = 0; jy < ny; jy++)
+    for (jx = 0; jx < nx; jx++) {
+        REAL x = dx * ((REAL) (jx + 0.5));
+        for (jy = 0; jy < ny; jy++) {
+            REAL y = dy * ((REAL) (jy + 0.5));
+            #pragma omp simd
             for (jz = 0; jz < nz; jz++) {
-                REAL x = dx * ((REAL) (jx + 0.5));
-                REAL y = dy * ((REAL) (jy + 0.5));
                 REAL z = dz * ((REAL) (jz + 0.5));
                 REAL f0 = (REAL) 0.125
                           * (1.0 - ax * cos(kx * x))
@@ -68,6 +69,8 @@ void init(REAL *F1, const int nx, const int ny, const int nz,
                           * (1.0 - az * cos(kz * z));
                 F1(jx, jy, jz) = f0;
             }
+        }
+    }
 }
 
 REAL sum_values(REAL *F1, const int nx, const int ny, const int nz) {
@@ -75,13 +78,13 @@ REAL sum_values(REAL *F1, const int nx, const int ny, const int nz) {
     int jz, jy, jx;
     for (jx = 0; jx < nx; jx++)
         for (jy = 0; jy < ny; jy++)
+#pragma omp simd
             for (jz = 0; jz < nz; jz++)
                 sum += F1(jx, jy, jz);
     return sum;
 }
 
 int main(int argc, char *argv[]) {
-    int jz, jy, jx;
     int NX = 128, NY = 128, NZ = 128;
 
     if (argc > 1) { NX = atoi(argv[1]); } // get  first command line parameter
