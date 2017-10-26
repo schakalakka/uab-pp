@@ -1,0 +1,180 @@
+# started on Thu Oct 26 23:27:01 2017
+
+
+ Performance counter stats for './Diffg_0Double 50 50 50':
+
+       426.588.737      cycles                    #    2,448 GHz                    
+       734.820.689      instructions              #    1,72  insns per cycle        
+            38.413      cache-misses              #    0,220 M/sec                  
+        174,272786      task-clock (msec)         #    0,997 CPUs utilized          
+
+       0,174780956 seconds time elapsed
+
+# started on Thu Oct 26 23:27:01 2017
+
+
+ Performance counter stats for './Diffg_0Double 75 75 75':
+
+     5.678.720.533      cycles                    #    3,368 GHz                    
+     8.134.544.145      instructions              #    1,43  insns per cycle        
+         5.402.590      cache-misses              #    3,204 M/sec                  
+       1686,250681      task-clock (msec)         #    1,001 CPUs utilized          
+
+       1,685015965 seconds time elapsed
+
+# started on Thu Oct 26 23:27:02 2017
+
+
+ Performance counter stats for './Diffg_0Double 100 100 100':
+
+    33.655.285.085      cycles                    #    3,363 GHz                    
+    45.427.467.255      instructions              #    1,35  insns per cycle        
+       250.791.001      cache-misses              #   25,058 M/sec                  
+      10008,516380      task-clock (msec)         #    1,001 CPUs utilized          
+
+       9,999633635 seconds time elapsed
+
+# started on Thu Oct 26 23:27:33 2017
+
+
+ Performance counter stats for './Diffg_0slow 50 50 50':
+
+     2.365.760.967      cycles                    #    3,237 GHz                    
+     2.662.857.752      instructions              #    1,13  insns per cycle        
+            26.609      cache-misses              #    0,036 M/sec                  
+        730,737514      task-clock (msec)         #    0,992 CPUs utilized          
+
+       0,736883830 seconds time elapsed
+
+# started on Thu Oct 26 23:27:34 2017
+
+
+ Performance counter stats for './Diffg_0slow 75 75 75':
+
+    27.755.424.150      cycles                    #    3,238 GHz                    
+    29.748.044.200      instructions              #    1,07  insns per cycle        
+           273.747      cache-misses              #    0,032 M/sec                  
+       8573,044542      task-clock (msec)         #    0,999 CPUs utilized          
+
+       8,580434934 seconds time elapsed
+
+# started on Thu Oct 26 23:27:43 2017
+
+
+ Performance counter stats for './Diffg_0slow 100 100 100':
+
+   149.860.283.074      cycles                    #    3,263 GHz                    
+   166.732.297.892      instructions              #    1,11  insns per cycle        
+        44.148.673      cache-misses              #    0,961 M/sec                  
+      45933,712141      task-clock (msec)         #    1,001 CPUs utilized          
+
+      45,898807723 seconds time elapsed
+
+# started on Thu Oct 26 23:29:22 2017
+
+
+ Performance counter stats for './Diffg_0O1 50 50 50':
+
+       517.957.554      cycles                    #    3,238 GHz                    
+       796.450.902      instructions              #    1,54  insns per cycle        
+            23.722      cache-misses              #    0,148 M/sec                  
+        159,985041      task-clock (msec)         #    0,994 CPUs utilized          
+
+       0,160987191 seconds time elapsed
+
+# started on Thu Oct 26 23:29:22 2017
+
+
+ Performance counter stats for './Diffg_0O1 75 75 75':
+
+     5.834.273.662      cycles                    #    3,237 GHz                    
+     8.841.354.135      instructions              #    1,52  insns per cycle        
+         1.275.597      cache-misses              #    0,708 M/sec                  
+       1802,129360      task-clock (msec)         #    1,001 CPUs utilized          
+
+       1,800663992 seconds time elapsed
+
+# started on Thu Oct 26 23:29:24 2017
+
+
+ Performance counter stats for './Diffg_0O1 100 100 100':
+
+    37.083.909.831      cycles                    #    3,237 GHz                    
+    49.450.081.665      instructions              #    1,33  insns per cycle        
+       117.964.184      cache-misses              #   10,298 M/sec                  
+      11455,036389      task-clock (msec)         #    1,001 CPUs utilized          
+
+      11,445037023 seconds time elapsed
+
+# started on Thu Oct 26 23:30:16 2017
+
+
+ Performance counter stats for './Diffg_0O2 50 50 50':
+
+       680.941.063      cycles                    #    3,237 GHz                    
+       673.202.560      instructions              #    0,99  insns per cycle        
+            20.276      cache-misses              #    0,096 M/sec                  
+        210,331853      task-clock (msec)         #    0,996 CPUs utilized          
+
+       0,211128940 seconds time elapsed
+
+# started on Thu Oct 26 23:30:16 2017
+
+
+ Performance counter stats for './Diffg_0O2 75 75 75':
+
+     7.888.819.367      cycles                    #    3,238 GHz                    
+     7.436.877.220      instructions              #    0,94  insns per cycle        
+            77.917      cache-misses              #    0,032 M/sec                  
+       2436,616856      task-clock (msec)         #    1,000 CPUs utilized          
+
+       2,435458836 seconds time elapsed
+
+# started on Thu Oct 26 23:30:19 2017
+
+
+ Performance counter stats for './Diffg_0O2 100 100 100':
+
+    46.387.675.432      cycles                    #    3,237 GHz                    
+    41.524.769.163      instructions              #    0,90  insns per cycle        
+        37.675.747      cache-misses              #    2,629 M/sec                  
+      14328,499335      task-clock (msec)         #    0,999 CPUs utilized          
+
+      14,340918159 seconds time elapsed
+
+# started on Thu Oct 26 23:30:39 2017
+
+
+ Performance counter stats for './Diffg_0O3 50 50 50':
+
+       679.657.411      cycles                    #    3,238 GHz                    
+       671.918.818      instructions              #    0,99  insns per cycle        
+            21.021      cache-misses              #    0,100 M/sec                  
+        209,931160      task-clock (msec)         #    0,946 CPUs utilized          
+
+       0,221814253 seconds time elapsed
+
+# started on Thu Oct 26 23:30:40 2017
+
+
+ Performance counter stats for './Diffg_0O3 75 75 75':
+
+     7.922.964.380      cycles                    #    3,238 GHz                    
+     7.429.115.444      instructions              #    0,94  insns per cycle        
+           132.356      cache-misses              #    0,054 M/sec                  
+       2447,144200      task-clock (msec)         #    0,993 CPUs utilized          
+
+       2,465407443 seconds time elapsed
+
+# started on Thu Oct 26 23:30:42 2017
+
+
+ Performance counter stats for './Diffg_0O3 100 100 100':
+
+    47.141.522.564      cycles                    #    3,237 GHz                    
+    41.496.491.196      instructions              #    0,88  insns per cycle        
+        39.255.718      cache-misses              #    2,696 M/sec                  
+      14561,673369      task-clock (msec)         #    0,999 CPUs utilized          
+
+      14,569205833 seconds time elapsed
+
