@@ -23,7 +23,7 @@ We chose the Diffusion Algorithm for our lab assignment.
 The main part of the algorithm is determined by the loops. We have a triple nested loop in \emph{sum\_values} (called twice) for summing all the values of the 3D-matrix, a triple nested loop in \emph{init} (twice) for setting the initial values and the diffusion function with a four-fold nested loop (called once) which is the main part of the computation. Allocating the memory for the array with malloc is in regard to the other functions rather negligible. 
 
 Therefore we get for a 3D-matrix with the size of $ N_x\times N_y \times N_z $ the number of operations: \[ 2 N_x N_y N_z + 2 N_x N_y N_z + T N_x N_y N_z \]
-where $ T =  \frac{N_x N_y N_z}{1000}$.
+where $ T =  \frac{N_x N_y N_z}{1000}$ (in the code it is named \emph{count}).
 The first two summands are for bigger input sizes way smaller and hence can be neglected. This leads us to the complexity of $ \mathcal{O}(N_x^2 N_y^2 N_z^2) $.
 
 \section{Base Version's Performance and Correctness}
@@ -56,7 +56,7 @@ There is a slight difference between the GCC and the ICC compiler. However, in g
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1.0\linewidth]{Benchmark/Instrcycle}
+	\includegraphics[width=1.0\linewidth]{"Benchmark/Instrcycle"}
 	\caption{Instructions per cycle}
 	\label{fig:instrcycle}
 \end{figure}
