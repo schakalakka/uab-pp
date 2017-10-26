@@ -32,12 +32,21 @@ int main(int argc, char ** argv) {
         exit(1);
     }
 
-    // initialize positions of matrix U
-    double U[X+1][T+2];
-    for (int i = 0; i <= T+1; ++i) {
-        U[0][i] = 0;
-        U[X][i] = 0;
+    float **U = (float **) calloc(X+1, sizeof(float *));
+
+    //initialize each row/line with zeros
+    for (int k = 0; k < X+1; ++k) {
+        U[k] = (float *) calloc(T+2, sizeof(float));
     }
+
+    // initialize positions of matrix U
+//    double U[X+1][T+2];
+//    for (int i = 0; i <= T+1; ++i) {
+//        U[0][i] = 0;
+//        U[X][i] = 0;
+//    }
+    printf("%d, %d", X, T);
+
     double temp_cos_val = cos(M_PIl/T);
     for (int j = 1; j < X; ++j) {
         U[j][0] = sin(j*M_PIl/X);
@@ -53,7 +62,7 @@ int main(int argc, char ** argv) {
     // obtain checksum of final state and print on screen
     double sum = 0;
     for (int k = 0; k <= X; ++k) {
-        sum += U[k][T];
+        sum += U[k][T+1];
     }
     printf("Checksum: %f", sum);
 }

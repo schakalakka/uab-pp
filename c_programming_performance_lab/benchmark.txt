@@ -1,0 +1,112 @@
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffg_0 
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : -5.081250E+01
+
+ Performance counter stats for './Diffg_0':
+
+   652.297.163.610      cycles                    #    3,372 GHz                    
+   182.373.984.933      instructions              #    0,28  insns per cycle        
+    13.142.426.823      cache-misses              #   67,929 M/sec                  
+     193473,374801      task-clock (msec)         #    0,998 CPUs utilized          
+
+     193,837470285 seconds time elapsed
+
+
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffi_0 
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : -2.531250E+00
+
+ Performance counter stats for './Diffi_0':
+
+   577.002.878.384      cycles                    #    3,371 GHz                    
+   189.819.582.962      instructions              #    0,33  insns per cycle        
+     9.323.641.228      cache-misses              #   54,475 M/sec                  
+     171153,272571      task-clock (msec)         #    0,998 CPUs utilized          
+
+     171,474787840 seconds time elapsed
+
+
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffg_1 
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : -5.081250E+01
+
+ Performance counter stats for './Diffg_1':
+
+   547.923.459.479      cycles                    #    3,368 GHz                    
+   182.276.108.819      instructions              #    0,33  insns per cycle        
+     9.544.055.276      cache-misses              #   58,663 M/sec                  
+     162692,047093      task-clock (msec)         #    0,998 CPUs utilized          
+
+     163,000475276 seconds time elapsed
+
+
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffi_1 
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : -2.531250E+00
+
+ Performance counter stats for './Diffi_1':
+
+   579.527.807.088      cycles                    #    3,371 GHz                    
+   189.880.421.945      instructions              #    0,33  insns per cycle        
+     9.274.137.073      cache-misses              #   53,942 M/sec                  
+     171928,914627      task-clock (msec)         #    0,998 CPUs utilized          
+
+     172,252609257 seconds time elapsed
+
+
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffg_2 
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : 2.812500E-01
+
+ Performance counter stats for './Diffg_2':
+
+   533.364.212.790      cycles                    #    3,362 GHz                    
+   182.248.916.421      instructions              #    0,34  insns per cycle        
+     9.408.319.046      cache-misses              #   59,301 M/sec                  
+     158654,950416      task-clock (msec)         #    0,998 CPUs utilized          
+
+     158,955406530 seconds time elapsed
+
+
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffi_2
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : -2.531250E+00
+
+ Performance counter stats for './Diffi_2':
+
+   595.906.209.124      cycles                    #    3,370 GHz                    
+   189.896.364.378      instructions              #    0,32  insns per cycle        
+     9.313.158.572      cache-misses              #   52,670 M/sec                  
+     176820,717077      task-clock (msec)         #    0,998 CPUs utilized          
+
+     177,153068255 seconds time elapsed
+
+
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffg_3
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : 2.812500E-01
+
+ Performance counter stats for './Diffg_3':
+
+    65.940.332.715      cycles                    #    3,351 GHz                    
+   155.483.891.635      instructions              #    2,36  insns per cycle        
+        16.617.187      cache-misses              #    0,844 M/sec                  
+      19678,076396      task-clock (msec)         #    0,998 CPUs utilized          
+
+      19,720698805 seconds time elapsed
+
+
+
+ppM-1-3@aolin17:~/workspace/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffi_3
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : -2.531250E+00
+
+ Performance counter stats for './Diffi_3':
+
+    67.707.006.826      cycles                    #    3,368 GHz                    
+   159.057.576.818      instructions              #    2,35  insns per cycle        
+        19.105.437      cache-misses              #    0,950 M/sec                  
+      20103,092631      task-clock (msec)         #    0,998 CPUs utilized          
+
+      20,146465082 seconds time elapsed
+
