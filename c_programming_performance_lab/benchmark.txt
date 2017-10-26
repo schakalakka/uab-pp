@@ -135,3 +135,31 @@ Accuracy     : -2.406250E+00
        6368,051676      task-clock (msec)         #    1,001 CPUs utilized          
 
        6,363259170 seconds time elapsed
+
+
+ppM-1-3@aolin21:~/workspace/gitspace/uab-pp/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffg_5
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : 2.812500E-01
+
+ Performance counter stats for './Diffg_5':
+
+    25.530.623.425      cycles                    #    3,310 GHz                    
+    44.775.605.005      instructions              #    1,75  insns per cycle        
+        27.395.622      cache-misses              #    3,551 M/sec                  
+       7714,192750      task-clock (msec)         #    1,000 CPUs utilized          
+
+       7,710621114 seconds time elapsed
+
+ppM-1-3@aolin21:~/workspace/gitspace/uab-pp/c_programming_performance_lab$ perf stat -e cycles,instructions,cache-misses,task-clock ./Diffi_5
+Running diffusion kernel with NX=128, NY=128, NZ=128, 2097 times
+Accuracy     : -2.406250E+00
+
+ Performance counter stats for './Diffi_5':
+
+    21.285.211.881      cycles                    #    3,352 GHz                    
+    35.599.800.698      instructions              #    1,67  insns per cycle        
+        47.320.906      cache-misses              #    7,453 M/sec                  
+       6349,399181      task-clock (msec)         #    1,001 CPUs utilized          
+
+       6,344599517 seconds time elapsed
+
