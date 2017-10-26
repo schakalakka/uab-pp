@@ -28,8 +28,6 @@ diffusion(REAL *F1, REAL *F2, int nx, int ny, int nz, REAL ce, REAL cw, REAL cn,
                 if (y == ny - 1) south = y; else south = y + 1;
                 F2(x, y, 0) = (F1(x, y, z) * cc + F1(west, y, z) * cw + F1(east, y, z) * ce + F1(x, north, z) * cn +
                                    F1(x, south, z) * cs + F1(x, y, 0) * cb + F1(x, y, 1) * ct);
-                //loop_content(F1, x, y, z, nx, ny, nz, ce, cw, cn, cs, ct, cb, cc, west, east, north,
-                                           //south, 1, 0);
 #pragma omp simd
                 for (z = 1; z < nz - 1; z++) {
                     F2(x, y, z) = (F1(x, y, z) * cc + F1(west, y, z) * cw + F1(east, y, z) * ce + F1(x, north, z) * cn +
@@ -37,8 +35,6 @@ diffusion(REAL *F1, REAL *F2, int nx, int ny, int nz, REAL ce, REAL cw, REAL cn,
                 }
                 F2(x, y, nz - 1) =(F1(x, y, z) * cc + F1(west, y, z) * cw + F1(east, y, z) * ce + F1(x, north, z) * cn +
                                    F1(x, south, z) * cs + F1(x, y, nz - 2) * cb + F1(x, y, nz - 1) * ct);
-                //loop_content(F1, x, y, z, nx, ny, nz, ce, cw, cn, cs, ct, cb, cc, west, east, north,
-                                             //   south, nz - 1, nz - 2);
             }
         }
         REAL *tt = F1;

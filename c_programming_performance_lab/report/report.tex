@@ -37,7 +37,7 @@ As we can see in figure (\ref{fig:oper}) the baseline version is very slow. For 
 	\label{fig:oper}
 \end{figure}
 
-\section{Effect of Problem Size}
+\section{Effect of Problem Size and Variable Type}
 
 As derived in chapter (\ref{chp:opcom}) we can see in figure (\ref{fig:clock}) that the computation time indeed grows exponentially fast. Note that the y-axis has a logarithmic scale. We can see as well that the baseline code is slower than the improved one. It is independend of the input size.
 
@@ -63,6 +63,31 @@ There is a slight difference between the GCC and the ICC compiler. However, in g
 
 
 \section{Optimized Version without SIMD}
+
+The most important part for our non-SIMD optimization was to change the order of the loops in the different functions. We started with reordering the \emph{init} method (\emph{Diff\_1}), followed by \emph{sum\_values} (\emph{Diff\_2}) and finally the \emph{diffusion} part (\emph{Diff\_3}). Additionally restructured some \emph{if}-conditions or variable assignments to outer loops because they had no dependence on the inner loop variables.  
+
+ 
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark/seconds"}
+	\caption{Elapsed Time in Seconds for the different Code Versions}
+	\label{fig:seconds}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark/percentage"}
+	\caption{Relative part of Cycles, Instructions, Cache-misses, task-clock and Seconds for the non-SIMD-optimized \emph{Diff\_3} and the SIMD-\emph{Diff\_5}. The percentages are in relation to the base program.}
+	\label{fig:percentage}
+\end{figure}
+
+One can see in Figure \ref{fig:seconds} that the first two optimizations had barely an effect. But the change of the diffusion method with its four-fold loop leads to a execution time of roughly 10-12 \% compared to the base program. 
+
+Although the number of instructions has not decreased vastly (around 83-85 \%, compare Figure \ref{fig:percentage}) in every other aspect \emph{Diff\_3} performs well better than \emph{Diff\_0} with only 10-11\% cycles, task-clock and elapsed time and even less than 1\% in cache-misses. 
+
 \section{Optimized Version with SIMD}
+
+For the vectorization we had to adapt the \emph{diffusion} method a bit more. Because of the specific boundary conditions the most inner loop could only go from $ 1 < z < N_z - 1 $. Therefore computed the two boundary points separately before and after the loop. \emph{Diff\_4} contains the directive only for the inner \emph{diffusion} loop whereas \emph{diff\_5} has additionally active SIMD directives for \emph{init} and \emph{sum\_values}. Again one can see (compare Figure \ref{fig:percentage}) that the latter two functions have an insignificant role. But overall the SIMD instruction is a big improvement again. Especially the relative part of instructions (compared to \emph{Diff\_0}) shrunk from 84-85\% to 19-25\%. Equally the stats in cycles, task-clock and elapsed time improved further. 
+
 \section{Performance Bottlenecks}
 \end{document}
