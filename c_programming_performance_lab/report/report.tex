@@ -45,7 +45,13 @@ As derived in chapter (\ref{chp:opcom}) we can see in figure (\ref{fig:clock}) t
 
 Later we will optimize different stages (initialization, diffusion and error computation(\emph{sum\_value}) at which we will see that the initialization has no real impact on the performance (for slightly bigger input values). 
 
-\textcolor{red}{TODO}compare with double compiled
+Obviously the \emph{float} version of our program fares better in terms of performance (compare Figure \ref{fig:floatvsdouble}) than with \emph{double}. Instructions per cycle and operations per second are around 10 to 20\% better and for cycles, instructions, task-clock and execution time it takes only 80\% of the \emph{double} version. But the most glaring distinction is the decreased number of cache-misses (especially for higher input numbers) of the \emph{float} program. With this one can clearly see where the smaller data types come in handy. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark 3/floatvsdouble"}
+	\caption{Comparison of float vs double compilation. 100\% = double. }
+	\label{fig:floatvsdouble}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
@@ -54,11 +60,11 @@ Later we will optimize different stages (initialization, diffusion and error com
 	\label{fig:clock}
 \end{figure}
 
-In figure (\ref{fig:oper}) we can see the operations per second in [$N^6/s$]. Note that the baseline code slows down for higher input size. In contrast the improved version "jumps" when doubling the input size from $N=50$ to $N=100$. There are almost no differences for higher input sizes. A small variation can be seen for $N=150$.
+In Figure \ref{fig:oper} we can see the operations per second in [$N^6/s$]. Note that the baseline code slows down for higher input size. In contrast the improved version "jumps" when doubling the input size from $N=50$ to $N=100$. There are almost no differences for higher input sizes. A small variation can be seen for $N=150$.
 
 \section{Compilers}
 
-There is a slight difference between the GCC and the ICC compiler. However, in general there cannot made a statement whether GCC or ICC is better. In figure (\ref{fig:instrcycle}) we can see that ICC reaches a higher value for instructions per cycle than GCC. If we take a look at the improved version, we see that the GCC compiler reaches a higher value. The result looks similar if we compare values like instructions, cycles or time.
+There is a slight difference between the GCC and the ICC compiler. However, in general there cannot made a statement whether GCC or ICC is better. In Figure \ref{fig:instrcycle} we can see that ICC reaches a higher value for instructions per cycle than GCC. If we take a look at the improved version, we see that the GCC compiler reaches a higher value. The result looks similar if we compare values like instructions, cycles or time.
 
 \begin{figure}
 	\centering
@@ -67,8 +73,21 @@ There is a slight difference between the GCC and the ICC compiler. However, in g
 	\label{fig:instrcycle}
 \end{figure}
 
+In Figure \ref{fig:Ocompelapsedtime} and \ref{fig:noopssec} one can see that the flag options bring a lot of performance improvements. The biggest jump is attained when activating \emph{-O1} (\emph{Diffg\_0O1}). It can be further improved with \emph{-O2} (\emph{Diffg\_0O2}) but between \emph{-O2}, \emph{-O3} and \emph{-OFast} there is almost no further improvement. 
 
-\textcolor{red}{TODO} compare with different flags
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark 3/elapsedtimepercOcomp"}
+	\caption{Relation of elapsed Time of different Optimization Flags compared to no Optimization at all.}
+	\label{fig:Ocompelapsedtime}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark 3/noopssec"}
+	\caption{Development of number of Operations per second for several flag options.  }
+	\label{fig:noopssec}
+\end{figure}
 
 \section{Optimized Version without SIMD}
 
