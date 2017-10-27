@@ -17,6 +17,26 @@
 \begin{document}
 	\maketitle
 	
+	
+\section*{Glossary} 
+For easier understanding we want to put a short explanation for each compiled program and its used flags. 
+
+Diff\textcolor{green}{x}\_\textcolor{blue}{n}\textcolor{red}{\{suffix\}}
+\begin{itemize}
+\item \textcolor{green}{x} $ \in \{g,i\} $ - determines the used compiler, gcc or icc,
+\item \textcolor{blue}{n} $ \in \{0,1,2,3,4,5\} $ - grade of optimization (in the written code, not respective to the flag): 0 - given base program, 1, 2, 3 - loop reordering (see Section \ref{chp:optwosimd}), 4, 5 - use vector/SIMD instructions (Section \ref{chp:optwsimd}),
+\item \textcolor{red}{\{suffix\}} - possible suffixes \emph{O1, O2, O3} (for the compiler flags -O1 etc.) or \emph{Oslow} (for no optimization at all), \emph{Double} for a compiled version of \emph{REAL double} or none at all (if the optimization flag is not stated always Ofast is used).
+\end{itemize}
+
+Examples:
+\begin{itemize}
+\item Diffi\_3 - full loop reordering, compiled with icc -Ofast diff.c -o Diffi\_3  
+\item Diffi\_5 - full SIMD instructions, compiled with icc -Ofast -openmp diff.c -o Diffi\_5 
+\item Diffg\_0O2 - base program with -O2 flag, compiled with gcc -O2 diff.c -o Diffg\_0O2
+\item Diffg\_0Double - REAL is equal to double instead of float, compiled with gcc -Ofast diff.c -o Diffg\_0Double
+\end{itemize} 
+ 
+
 \section{Operations and Complexity}\label{chp:opcom}
 
 We chose the Diffusion Algorithm for our lab assignment.
@@ -26,7 +46,7 @@ Therefore we get for a 3D-matrix with the size of $ N_x\times N_y \times N_z $ t
 where $ T =  \frac{N_x N_y N_z}{1000}$ (in the code it is named \emph{count}).
 The first two summands are for bigger input sizes way smaller and hence can be neglected. This leads us to the complexity of $ \mathcal{O}(N_x^2 N_y^2 N_z^2) $.
 
-\section{Base Version's Performance and Correctness}
+\section{Base Version's Performance}
 
 As we can see in Figure \ref{fig:oper} the baseline version is very slow. For an input size of $N=200$ the improved version is nearly 12.6 times faster. It can handle $569\cdot10^6$ operations per second. The baseline version scores only $45\cdot10^6$ operations per second.
 
@@ -38,15 +58,21 @@ As we can see in Figure \ref{fig:oper} the baseline version is very slow. For an
 \end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1.0\linewidth]{"Benchmark 2/clock"}
-	\caption{Task-Clock (msec)}
-	\label{fig:clock}
+	\includegraphics[width=1.0\linewidth]{"Benchmark 2/instructionsinput"}
+	\caption{Number of Instructions}
+	\label{fig:instructionsinput}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark 2/growth"}
+	\caption{Growth of some Performance Stats for the Base Program. }
+	\label{fig:growth}
 \end{figure}
 
 
 \section{Effect of Problem Size and Variable Type}
 
-As derived in Section \ref{chp:opcom} we can see in Figure \ref{fig:clock} that the computation time indeed grows exponentially fast. Note that the y-axis has a logarithmic scale. We can see as well that the baseline code is slower than the improved one. It is independent of the input size.
+As derived in Section \ref{chp:opcom} we can see in Figure \ref{fig:instructionsinput} and \ref{fig:growth} that the number of instructions indeed seems to grow polynomially with an order of 6. For the other stats it shows mostly the same picture. We can see as well that the baseline code performs way worse than the fully optimized version. 
 
 Later we will optimize different stages (initialization, diffusion and error computation (\emph{sum\_value}) at which we will see that the initialization has no real impact on the performance (for slightly bigger input values). 
 
@@ -64,7 +90,7 @@ In Figure \ref{fig:oper} we can see the operations per second in [$N^6/s$]. Note
 
 \section{Compilers}
 
-There is a slight difference between the GCC and the ICC compiler. However, in general there cannot be made a statement whether GCC or ICC is better. In Figure \ref{fig:instrcycle} we can see that ICC reaches a higher value for instructions per cycle than GCC. If we take a look at the improved version, we see that the GCC compiler reaches a higher value. The result looks similar if we compare values like instructions, cycles or time.
+There is a only slight difference between the GCC and the ICC compiler. However, in general there cannot be made a statement whether GCC or ICC is better. In Figure \ref{fig:instrcycle} we can see that ICC reaches a higher value for instructions per cycle than GCC. If we take a look at the improved version, we see that the GCC compiler reaches a higher value. The result looks similar if we compare values like instructions, cycles or time.
 
 \begin{figure}
 	\centering
@@ -89,7 +115,7 @@ In Figure \ref{fig:Ocompelapsedtime} and \ref{fig:noopssec} one can see that the
 	\label{fig:noopssec}
 \end{figure}
 
-\section{Optimized Version without SIMD}
+\section{Optimized Version without SIMD}\label{chp:optwosimd}
 
 The most important part for our non-SIMD optimization was to change the order of the loops in the different functions. We started with reordering the \emph{init} method (\emph{Diff\_1}), followed by \emph{sum\_values} (\emph{Diff\_2}) and finally the \emph{diffusion} part (\emph{Diff\_3}). Additionally restructured some \emph{if}-conditions or variable assignments to outer loops because they had no dependence on the inner loop variables.  
 
@@ -112,9 +138,22 @@ One can see in Figure \ref{fig:seconds} that the first two optimizations had bar
 
 Although the number of instructions has not decreased vastly (around 83-85 \%, compare Figure \ref{fig:percentage}) in every other aspect \emph{Diff\_3} performs well better than \emph{Diff\_0} with only 10-11\% cycles, task-clock and elapsed time and even less than 1\% in cache-misses. 
 
-\section{Optimized Version with SIMD}
+\section{Optimized Version with SIMD}\label{chp:optwsimd}
 
 For the vectorization we had to adapt the \emph{diffusion} method a bit more. Because of the specific boundary conditions the most inner loop could only go from $ 1 < z < N_z - 1 $. Therefore computed the two boundary points separately before and after the loop. \emph{Diff\_4} contains the directive only for the inner \emph{diffusion} loop whereas \emph{diff\_5} has additionally active SIMD directives for \emph{init} and \emph{sum\_values}. Again one can see (compare Figure \ref{fig:percentage}) that the latter two functions have an insignificant role. But overall the SIMD instruction is a big improvement again. Especially the relative part of instructions (compared to \emph{Diff\_0}) shrunk from 84-85\% to 19-25\%. Equally the stats in cycles, task-clock and elapsed time improved further. 
 
+For the compilation the flags -fopenmp and -openmp respectively were added. 
+
 \section{Performance Bottlenecks}
+
+In Figure \ref{fig:growthoptimized} are the performance stats of the optimized version (\emph{Diffg\_5}) shown for varying input sizes. As the base of 100\% the input matrix of size $ 50\times 50 \times 50 $ is used. One can see that the number of instructions, the cycles and the task-clock behave quite similar. But the real problem here is the growth of cache-misses. One can conclude from this data that for increasing 3D-matrix sizes the CPU's cache does not suffices the program's memory consumption and hence has to use the RAM.  
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark 2/growthoptimized"}
+	\caption{Growth of some Performance Stats for the optimized Program. }
+	\label{fig:growthoptimized}
+\end{figure}
+
 \end{document}
