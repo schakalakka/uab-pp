@@ -20,15 +20,15 @@
 \section{Operations and Complexity}\label{chp:opcom}
 
 We chose the Diffusion Algorithm for our lab assignment.
-The main part of the algorithm is determined by the loops. We have a triple nested loop in \emph{sum\_values} (called twice) for summing all the values of the 3D-matrix, a triple nested loop in \emph{init} (twice) for setting the initial values and the diffusion function with a four-fold nested loop (called once) which is the main part of the computation. Allocating the memory for the array with malloc is in regard to the other functions rather negligible. 
+The main part of the algorithm is determined by the loops. We have a triple nested loop in \emph{sum\_values} (called twice) for summing all the values of the 3D-matrix, a triple nested loop in \emph{init} for setting the initial values and the diffusion function with a four-fold nested loop which is the main part of the computation. Allocating the memory for the array with malloc is in regard to the other functions rather negligible. 
 
-Therefore we get for a 3D-matrix with the size of $ N_x\times N_y \times N_z $ the number of operations: \[ 2 N_x N_y N_z + 2 N_x N_y N_z + T N_x N_y N_z \]
+Therefore we get for a 3D-matrix with the size of $ N_x\times N_y \times N_z $ the number of operations: \[ 2 N_x N_y N_z + N_x N_y N_z + T N_x N_y N_z \]
 where $ T =  \frac{N_x N_y N_z}{1000}$ (in the code it is named \emph{count}).
 The first two summands are for bigger input sizes way smaller and hence can be neglected. This leads us to the complexity of $ \mathcal{O}(N_x^2 N_y^2 N_z^2) $.
 
 \section{Base Version's Performance and Correctness}
 
-As we can see in figure (\ref{fig:oper}) the baseline version is very slow. For an input size of $N=200$ the improved version is nearly 12.6 times faster. It can handle $569\cdot10^6$ operations per second. The baseline version scores only $45\cdot10^6$ operations per second.
+As we can see in Figure \ref{fig:oper} the baseline version is very slow. For an input size of $N=200$ the improved version is nearly 12.6 times faster. It can handle $569\cdot10^6$ operations per second. The baseline version scores only $45\cdot10^6$ operations per second.
 
 \begin{figure}[h]
 	\centering
@@ -36,14 +36,19 @@ As we can see in figure (\ref{fig:oper}) the baseline version is very slow. For 
 	\caption{Million Operations per Second}
 	\label{fig:oper}
 \end{figure}
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\linewidth]{"Benchmark 2/clock"}
+	\caption{Task-Clock (msec)}
+	\label{fig:clock}
+\end{figure}
 
 
 \section{Effect of Problem Size and Variable Type}
 
-As derived in chapter (\ref{chp:opcom}) we can see in figure (\ref{fig:clock}) that the computation time indeed grows exponentially fast. Note that the y-axis has a logarithmic scale. We can see as well that the baseline code is slower than the improved one. It is independent of the input size.
+As derived in Section \ref{chp:opcom} we can see in Figure \ref{fig:clock} that the computation time indeed grows exponentially fast. Note that the y-axis has a logarithmic scale. We can see as well that the baseline code is slower than the improved one. It is independent of the input size.
 
-Later we will optimize different stages (initialization, diffusion and error computation(\emph{sum\_value}) at which we will see that the initialization has no real impact on the performance (for slightly bigger input values). 
+Later we will optimize different stages (initialization, diffusion and error computation (\emph{sum\_value}) at which we will see that the initialization has no real impact on the performance (for slightly bigger input values). 
 
 Obviously the \emph{float} version of our program fares better in terms of performance (compare Figure \ref{fig:floatvsdouble}) than with \emph{double}. Instructions per cycle and operations per second are around 10 to 20\% better and for cycles, instructions, task-clock and execution time it takes only 80\% of the \emph{double} version. But the most glaring distinction is the decreased number of cache-misses (especially for higher input numbers) of the \emph{float} program. With this one can clearly see where the smaller data types come in handy. 
 \begin{figure}[h]
@@ -53,18 +58,13 @@ Obviously the \emph{float} version of our program fares better in terms of perfo
 	\label{fig:floatvsdouble}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1.0\linewidth]{"Benchmark 2/clock"}
-	\caption{Task-Clock (msec)}
-	\label{fig:clock}
-\end{figure}
+
 
 In Figure \ref{fig:oper} we can see the operations per second in [$N^6/s$]. Note that the baseline code slows down for higher input size. In contrast the improved version "jumps" when doubling the input size from $N=50$ to $N=100$. There are almost no differences for higher input sizes. A small variation can be seen for $N=150$.
 
 \section{Compilers}
 
-There is a slight difference between the GCC and the ICC compiler. However, in general there cannot made a statement whether GCC or ICC is better. In Figure \ref{fig:instrcycle} we can see that ICC reaches a higher value for instructions per cycle than GCC. If we take a look at the improved version, we see that the GCC compiler reaches a higher value. The result looks similar if we compare values like instructions, cycles or time.
+There is a slight difference between the GCC and the ICC compiler. However, in general there cannot be made a statement whether GCC or ICC is better. In Figure \ref{fig:instrcycle} we can see that ICC reaches a higher value for instructions per cycle than GCC. If we take a look at the improved version, we see that the GCC compiler reaches a higher value. The result looks similar if we compare values like instructions, cycles or time.
 
 \begin{figure}
 	\centering
