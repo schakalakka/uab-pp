@@ -26,27 +26,28 @@
 
       17,663332622 seconds time elapsed
 
-# started on Sat Nov 25 16:34:12 2017
+# started on Sat Nov 25 17:10:52 2017
 
 
  Performance counter stats for './perf.test':
 
-   198.856.637.957      cycles                    #    3,246 GHz                    
-    93.554.349.463      instructions              #    0,47  insns per cycle        
-       456.995.572      cache-misses              #    7,460 M/sec                  
-      61256,204761      task-clock (msec)         #    2,456 CPUs utilized          
+   243.038.761.832      cycles                    #    3,247 GHz                    
+    90.165.581.392      instructions              #    0,37  insns per cycle        
+       662.292.418      cache-misses              #    8,848 M/sec                  
+      74854,416094      task-clock (msec)         #    3,633 CPUs utilized          
 
-      24,943371525 seconds time elapsed
+      20,602897205 seconds time elapsed
 
-# started on Sat Nov 25 16:35:05 2017
+
+# started on Sat Nov 25 17:09:31 2017
 
 
  Performance counter stats for './perf.test':
 
-   276.951.562.529      cycles                    #    3,246 GHz                    
-   102.283.104.408      instructions              #    0,37  insns per cycle        
-       624.347.290      cache-misses              #    7,317 M/sec                  
-      85323,448136      task-clock (msec)         #    3,494 CPUs utilized          
+   502.243.380.435      cycles                    #    3,241 GHz                    
+    91.494.384.641      instructions              #    0,18  insns per cycle        
+     1.115.064.923      cache-misses              #    7,195 M/sec                  
+     154984,982465      task-clock (msec)         #    7,943 CPUs utilized          
 
-      24,420474081 seconds time elapsed
+      19,512136331 seconds time elapsed
 
