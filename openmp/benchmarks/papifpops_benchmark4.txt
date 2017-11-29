@@ -1,0 +1,94 @@
+Reading Profile files in profile.*
+
+NODE 0;CONTEXT 0;THREAD 0:
+---------------------------------------------------------------------------------------
+%Time   Exclusive   Inclusive       #Call      #Subrs Count/Call Name
+           counts total counts                            
+---------------------------------------------------------------------------------------
+100.0         111   2.135E+10           1           1 21354432535 .TAU application
+100.0         212   2.135E+10           1           3 21354432424 addr=<0x41a62b> 
+100.0         248   2.135E+10           1           1 21354103778 parallel (parallel fork/join) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+100.0   1.003E+04   2.135E+10           1        1001 21354103530 parallel (parallel begin/end) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+100.0    1.26E+04   2.135E+10        1000        1000   21354093 addr=<0x41a2a2> 
+100.0   2.135E+10   2.135E+10        1000      201002   21354081 for (loop body) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.0   7.016E+05   7.016E+05      100001           0          7 addr=<0x41a1bd> [THROTTLED]
+  0.0   4.001E+05   4.001E+05      100001           0          4 addr=<0x41a227> [THROTTLED]
+  0.0   3.284E+05   3.284E+05           2           0     164217 addr=<0x41a51f> 
+  0.0        3010        3010        1000           0          3 for (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.0           3           3           1           0          3 parallel (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+
+NODE 0;CONTEXT 0;THREAD 1:
+---------------------------------------------------------------------------------------
+%Time   Exclusive   Inclusive       #Call      #Subrs Count/Call Name
+           counts total counts                            
+---------------------------------------------------------------------------------------
+100.0           3   2.135E+10           1           1 21349350546 .TAU application
+100.0   1.004E+04   2.135E+10           1        1001 21349350543 parallel (parallel begin/end) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+100.0   1.258E+04   2.135E+10        1000        1000   21349340 addr=<0x41a2a2> 
+100.0   2.133E+10   2.135E+10        1000      198846   21349328 for (loop body) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.1   2.086E+07   2.086E+07       98924           1        211 addr=<0x41a227> [THROTTLED]
+  0.0   6.946E+05   6.946E+05       98923           0          7 addr=<0x41a1bd> [THROTTLED]
+  0.0        3015        3015        1000           0          3 for (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.0           3           3           1           0          3 parallel (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+
+NODE 0;CONTEXT 0;THREAD 2:
+---------------------------------------------------------------------------------------
+%Time   Exclusive   Inclusive       #Call      #Subrs Count/Call Name
+           counts total counts                            
+---------------------------------------------------------------------------------------
+100.0           3   2.133E+10           1           1 21328207798 .TAU application
+100.0   1.004E+04   2.133E+10           1        1001 21328207795 parallel (parallel begin/end) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+100.0   1.247E+04   2.133E+10        1000        1000   21328198 addr=<0x41a2a2> 
+100.0   2.131E+10   2.133E+10        1000      197344   21328185 for (loop body) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.1   2.084E+07   2.084E+07       98173           1        212 addr=<0x41a227> [THROTTLED]
+  0.0   6.898E+05   6.898E+05       98172           0          7 addr=<0x41a1bd> [THROTTLED]
+  0.0        3006        3006        1000           0          3 for (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.0           3           3           1           0          3 parallel (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+
+NODE 0;CONTEXT 0;THREAD 3:
+---------------------------------------------------------------------------------------
+%Time   Exclusive   Inclusive       #Call      #Subrs Count/Call Name
+           counts total counts                            
+---------------------------------------------------------------------------------------
+100.0           3   2.133E+10           1           1 21330864114 .TAU application
+100.0   1.003E+04   2.133E+10           1        1001 21330864111 parallel (parallel begin/end) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+100.0   1.248E+04   2.133E+10        1000        1000   21330854 addr=<0x41a2a2> 
+100.0   2.131E+10   2.133E+10        1000      195894   21330842 for (loop body) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.1   6.848E+05   2.114E+07       97448           2        217 addr=<0x41a1bd> [THROTTLED]
+  0.1   2.085E+07   2.085E+07       97449           1        214 addr=<0x41a227> [THROTTLED]
+  0.0        3024        3024        1000           0          3 for (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.0           3           3           1           0          3 parallel (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+
+FUNCTION SUMMARY (total):
+---------------------------------------------------------------------------------------
+%Time   Exclusive   Inclusive       #Call      #Subrs Count/Call Name
+           counts total counts                            
+---------------------------------------------------------------------------------------
+100.0         120   8.536E+10           4           4 21340713748 .TAU application
+100.0   4.014E+04   8.536E+10           4        4004 21340631495 parallel (parallel begin/end) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+100.0   5.014E+04   8.536E+10        4000        4000   21340621 addr=<0x41a2a2> 
+100.0    8.53E+10   8.536E+10        4000      793086   21340609 for (loop body) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+ 25.0         212   2.135E+10           1           3 21354432424 addr=<0x41a62b> 
+ 25.0         248   2.135E+10           1           1 21354103778 parallel (parallel fork/join) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+  0.1   6.295E+07   6.295E+07      394547           3        160 addr=<0x41a227> [THROTTLED]
+  0.0   2.771E+06   2.323E+07      394544           2         59 addr=<0x41a1bd> [THROTTLED]
+  0.0   3.284E+05   3.284E+05           2           0     164217 addr=<0x41a51f> 
+  0.0   1.206E+04   1.206E+04        4000           0          3 for (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.0          12          12           4           0          3 parallel (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+
+FUNCTION SUMMARY (mean):
+---------------------------------------------------------------------------------------
+%Time   Exclusive   Inclusive       #Call      #Subrs Count/Call Name
+           counts total counts                            
+---------------------------------------------------------------------------------------
+100.0          30   2.134E+10           1           1 21340713748 .TAU application
+100.0   1.004E+04   2.134E+10           1        1001 21340631495 parallel (parallel begin/end) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+100.0   1.253E+04   2.134E+10        1000        1000   21340621 addr=<0x41a2a2> 
+100.0   2.132E+10   2.134E+10        1000      198272   21340609 for (loop body) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+ 25.0          53   5.339E+09        0.25        0.75 21354432424 addr=<0x41a62b> 
+ 25.0          62   5.339E+09        0.25        0.25 21354103778 parallel (parallel fork/join) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
+  0.1   1.574E+07   1.574E+07     98636.8        0.75        160 addr=<0x41a227> [THROTTLED]
+  0.0   6.927E+05   5.806E+06       98636         0.5         59 addr=<0x41a1bd> [THROTTLED]
+  0.0   8.211E+04   8.211E+04         0.5           0     164217 addr=<0x41a51f> 
+  0.0        3014        3014        1000           0          3 for (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <26, 33>]
+  0.0           3           3           1           0          3 parallel (barrier enter/exit) [OpenMP location: file:/home/master/ppM/ppM-1-3/workspace/openmp/lapFusion.c <74, 80>]
